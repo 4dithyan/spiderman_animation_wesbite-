@@ -27,7 +27,7 @@ export default function StatusBars() {
             <span className="w-1.5 h-1.5 bg-spider-red rounded-full animate-pulse" /> 
             protocol // spider-man
           </div>
-          <div className="font-mono text-[8px] tracking-[0.3em] opacity-30 hidden lg:block lowercase">
+          <div className="font-mono text-[8px] tracking-[0.3em] opacity-30 hidden xl:block lowercase">
             surveillance node: nyc_metro_01
           </div>
         </div>
@@ -42,12 +42,12 @@ export default function StatusBars() {
           <div className="font-mono text-[8px] tracking-[0.4em] opacity-40 lowercase">
             status: synchronized
           </div>
-          <div className="font-mono text-[8px] tracking-[0.4em] opacity-40 hidden md:block lowercase">
+          <div className="font-mono text-[8px] tracking-[0.4em] opacity-40 hidden sm:block lowercase">
             frequency: {mounted ? `${mhz}.5` : "---.-"} mhz
           </div>
         </div>
         <div className="font-mono text-[9px] tracking-[0.5em] lowercase flex items-center gap-4">
-          <span className="opacity-20">time //</span> {mounted ? time : "--:--:--"} <span className="opacity-20 italic">utc</span>
+          <span className="opacity-20 hidden xs:inline">time //</span> {mounted ? time : "--:--:--"} <span className="opacity-20 italic hidden sm:inline">utc</span>
         </div>
       </div>
 
