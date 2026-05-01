@@ -16,11 +16,14 @@ export default function AccessProtocol() {
         duration: 1.2,
         ease: "power4.inOut",
       });
-      gsap.fromTo(
-        formRef.current?.querySelectorAll(".form-el"),
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out", delay: 0.4 }
-      );
+      const elements = formRef.current?.querySelectorAll(".form-el");
+      if (elements && elements.length > 0) {
+        gsap.fromTo(
+          elements,
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out", delay: 0.4 }
+        );
+      }
     } else {
       gsap.to(maskRef.current, {
         clipPath: "circle(0% at 85% 5%)",
@@ -56,7 +59,7 @@ export default function AccessProtocol() {
             <span className="font-mono text-[9px] text-spider-red tracking-[0.4em] uppercase mb-4 block">
               Admission // Protocol
             </span>
-            <h2 className="font-serif text-5xl italic">Join the Network</h2>
+            <h2 className="font-mono text-5xl font-bold tracking-tight">Join the Network</h2>
           </header>
 
           <form className="space-y-8">
