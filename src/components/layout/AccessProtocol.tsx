@@ -10,26 +10,36 @@ export default function AccessProtocol() {
   const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const mask = maskRef.current;
+    const form = formRef.current;
+
     if (isOpen) {
-      gsap.to(maskRef.current, {
-        clipPath: "circle(150% at 85% 5%)",
-        duration: 1.2,
-        ease: "power4.inOut",
-      });
-      const elements = formRef.current?.querySelectorAll(".form-el");
-      if (elements && elements.length > 0) {
-        gsap.fromTo(
-          elements,
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out", delay: 0.4 }
-        );
+      if (mask) {
+        gsap.to(mask, {
+          clipPath: "circle(150% at 85% 5%)",
+          duration: 1.2,
+          ease: "power4.inOut",
+        });
+      }
+      
+      if (form) {
+        const elements = gsap.utils.toArray(form.querySelectorAll(".form-el"));
+        if (elements.length > 0) {
+          gsap.fromTo(
+            elements,
+            { y: 30, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out", delay: 0.4 }
+          );
+        }
       }
     } else {
-      gsap.to(maskRef.current, {
-        clipPath: "circle(0% at 85% 5%)",
-        duration: 1,
-        ease: "power4.inOut",
-      });
+      if (mask) {
+        gsap.to(mask, {
+          clipPath: "circle(0% at 85% 5%)",
+          duration: 1,
+          ease: "power4.inOut",
+        });
+      }
     }
   }, [isOpen]);
 
